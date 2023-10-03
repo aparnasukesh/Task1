@@ -34,6 +34,7 @@ func RoutesConfig(r *gin.Engine, db *gorm.DB) {
 
 	adminGroup := r.Group("/su")
 	adminGroup.Use(authentication.AdminAuthentication())
+
 	r.GET("/admin-login", handlers.AdminLoginPage)
 	r.POST("/admin-login", handlers.AdminAuthentication)
 	{

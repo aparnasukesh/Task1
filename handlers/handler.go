@@ -1,7 +1,6 @@
 package handlers
 
 import (
-	"fmt"
 	"net/http"
 	"project_instant/authentication"
 	"project_instant/config"
@@ -139,7 +138,6 @@ func Logout(c *gin.Context) {
 //AAAAAAAAAAAAAADDDDDDDDMMMMMMMIIIIIIIIIIIINNNNNNNNNN PPPPPPPPPAAAAAAAAAANNNNNNNNNEEEEEEEELLLLLLLLLLLL
 
 func AdminLoginPage(c *gin.Context) {
-	fmt.Println("reahced =======......>>>>>>>>>>>>>>>>>>>>>>>>>.....")
 	tokenCookie, err := c.Cookie("Admin")
 	if err == nil && tokenCookie != "" {
 		c.Redirect(http.StatusSeeOther, "/su/admin-panel")
@@ -186,6 +184,7 @@ func AdminPanel(c *gin.Context) {
 		c.HTML(http.StatusOK, "adminpanel.html", gin.H{
 			"temp_user": temp_user,
 		})
+		return
 	}
 	c.HTML(http.StatusOK, "adminpanel.html", nil)
 
